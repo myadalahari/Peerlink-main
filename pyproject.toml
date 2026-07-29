@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling>=1.18.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "peerlink"
+version = "1.2.0"
+description = "Zero-config P2P RPC over LAN/WiFi — TCP + UDP dual-transport, modular architecture"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "PeerLink Authors" }
+]
+keywords = ["p2p", "rpc", "networking", "mdns", "udp"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Intended Audience :: Developers",
+  "Topic :: System :: Networking",
+  "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+  "zeroconf>=0.39",
+  "click>=8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "click",
+  "ruff",
+  "mypy",
+]
+
+[project.scripts]
+peerlink = "peerlink.cli:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/peerlink"]
+
